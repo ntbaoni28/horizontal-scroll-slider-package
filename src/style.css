@@ -1,0 +1,11 @@
+.slider-container{
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.slider{
+    width: max-content;
+    transition: all;
+}
