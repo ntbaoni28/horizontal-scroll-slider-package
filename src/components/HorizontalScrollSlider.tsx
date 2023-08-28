@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState, CSSProperties } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollOffset } from "@motionone/dom/types/gestures/scroll/types";
+
 type Props = {
   scrollHeight?: string;
   className?: string;
@@ -21,9 +22,6 @@ const HorizontalScrollSlider = ({
   const sliderRef = useRef<HTMLDivElement>(null);
   const containerSliderRef = useRef<HTMLDivElement>(null);
   const [range, setRange] = useState<number>(0);
-  const containerSlideStyle = {
-    "--scroll-height": scrollHeight,
-  } as CSSProperties;
 
   function updateSize() {
     if (sliderRef.current) {
@@ -45,19 +43,20 @@ const HorizontalScrollSlider = ({
   const transform = useTransform(scrollYProgress, [0, 1], [0, -range]);
 
   return (
-    <div
-      style={containerSlideStyle}
-      className="h-[var(--scroll-height)]"
-      ref={containerSliderRef}
-    >
+    <div style={{ height: scrollHeight }} ref={containerSliderRef}>
       <div
-        className={`slider-container ${className}`}
+        style={{
+          position: "sticky",
+          top: 0,
+          overflow: "hidden",
+          minHeight: "100vh",
+        }}
+        className={className}
       >
         {header}
         <motion.div
-          className={"slider"}
           ref={sliderRef}
-          style={{ x: transform }}
+          style={{ x: transform, width: "max-content", transition: "all" }}
         >
           {children}
         </motion.div>
