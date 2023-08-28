@@ -9,7 +9,6 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
-    "prettier",
     "react",
     "react-hooks"
   ],
@@ -18,8 +17,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "react/react-in-jsx-scope": "off"
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "react": {

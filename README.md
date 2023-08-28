@@ -1,1 +1,0 @@
-# horizontal-scroll-slider-package
